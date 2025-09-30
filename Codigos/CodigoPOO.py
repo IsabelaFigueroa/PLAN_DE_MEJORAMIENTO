@@ -1,0 +1,62 @@
+class Estudiante:
+    def _init_(self, nombre, edad, nota):
+        # Atributos de la clase Estudiante
+        self.nombre = nombre.title()  # Corrige el formato (Mayúscula inicial)
+        self.edad = edad
+        self.nota = nota
+
+    def mostrar_info(self): # Muestra la información básica del estudiante
+        print(f" Nombre: {self.nombre} | Edad: {self.edad} | Nota: {self.nota}")
+
+    def aprobo(self):
+        if self.nota >= 3.0: #Indica si el estudiante aprobó o no
+            print(f" {self.nombre} ha aprobado.")
+        else:
+            print(f" {self.nombre} no ha aprobado.")
+
+class SistemaRegistro:
+    def _init_(self):
+        # Lista que almacenará los estudiantes
+        self.estudiantes = []
+
+    def agregar_estudiante(self, estudiante): #Agrega un estudiante ya creado al sistema
+        self.estudiantes.append(estudiante)
+        print(f" {estudiante.nombre} fue agregado al sistema.")
+
+    def listar_estudiantes(self): #Muestra todos los estudiantes registrados
+        if not self.estudiantes:
+            print(" No hay estudiantes registrados.")
+        else:
+            print("\n Lista de estudiantes:")
+            for est in self.estudiantes:
+                est.mostrar_info()
+                est.aprobo()
+
+    def buscar_estudiante(self, nombre): #Busca un estudiante por nombre
+        nombre = nombre.title()
+        for est in self.estudiantes:
+            if est.nombre == nombre:
+                print("\n Estudiante encontrado:")
+                est.mostrar_info()
+                est.aprobo()
+                return
+        print(" Estudiante no encontrado.")
+
+# Creamos objetos de la clase Estudiante
+juan = Estudiante("juan perez", 16, 4.5)
+maria = Estudiante("maria lopez", 17, 2.8)
+# Creamos el sistema de registro
+sistema = SistemaRegistro()
+# Agregamos los estudiantes al sistema
+sistema.agregar_estudiante(juan)
+sistema.agregar_estudiante(maria)
+# Llamamos métodos directamente
+print("\nMETODOS JUAN")
+juan.mostrar_info()     # Mostrar info de Juan
+juan.aprobo()           # Verificar si aprobó
+print("\nMETODOS MARIA")
+maria.mostrar_info()    # Mostrar info de María
+maria.aprobo()          # Verificar si aprobó
+print("\nMETODOS SISTEMA")
+sistema.listar_estudiantes()              # Listar todos
+sistema.buscar_estudiante("maria lopez")  # Buscar a María
