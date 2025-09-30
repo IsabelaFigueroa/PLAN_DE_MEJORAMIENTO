@@ -1,5 +1,5 @@
 class Estudiante:
-    def _init_(self, nombre, edad, nota):
+    def __init__(self, nombre, edad, nota):
         # Atributos de la clase Estudiante
         self.nombre = nombre.title()  # Corrige el formato (Mayúscula inicial)
         self.edad = edad
@@ -15,7 +15,7 @@ class Estudiante:
             print(f" {self.nombre} no ha aprobado.")
 
 class SistemaRegistro:
-    def _init_(self):
+    def __init__(self):
         # Lista que almacenará los estudiantes
         self.estudiantes = []
 
